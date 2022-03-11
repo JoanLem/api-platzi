@@ -33,7 +33,6 @@ class productsService {
       ...product,
       ...data
     }
-    console.log("estoy aqui ---------------------------------------------------")
     return  this.products[index]
   }
 

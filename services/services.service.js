@@ -1,7 +1,7 @@
-class servicesServices{
+class servicesService{
 
   constructor(){
-    const services = [
+    this.services = [
       {
         id : 1,
         services: 'first services'
@@ -35,4 +35,4 @@ delete(){
 }
 }
 
-module.exports = servicesServices;
+module.exports = servicesService;

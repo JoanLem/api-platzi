@@ -1,50 +1,79 @@
 const express = require('express');
 const router = express.Router();
-const service = require('../services/products.service');
+const productsService = require('../services/products.service');
 
 
-const productsService = new service;
+const service = new productsService;
 
 router.get('/', (req,res) => {
-  productsService.find();
+  service.find();
   res.status(200).json(
     {
       message:'response OK',
-      productsService
+      service
     },
   )
 })
 
-router.get('/parametros', (req,res)=>{
-  const {id,size} = req.query;
-  console.log(`se esta aca`)
-  console.log(`${id} y ${size}`)
+router.get('/:id', (req,res)=>{
+  const { id } = req.params;
+  const product = service.findOne(id);
+  res.json(
+    product
+  )
 })
 
-router.get('/:id', (req , res) =>{
-  const id = req.params.id;
-  res.json({
-    id,
-    name: "Papa",
-    precio: 5000
-  });
+router.post('/',(req,res)=>{
+  const data = req.body
+  const newproduct = service.create(data);
+  res.json(
+    newproduct
+  )
 })
 
-router.post('/', (req , res) =>{
-  const body = req.body;
-  res.status(201).json({ //manejo de codigos de respuesta HTTP 201 - creado
-    message: 'servicio creado',
-    data: body
-  })
+router.patch('/:id',(req,res)=>{
+  const data = req.body
+  const {id} = req.params;
+  const product = service.update(id, data)
+  res.json(product)
 })
 
-router.patch('/:id', (req , res) =>{
-  const body = req.body;
-  res.json({
-    message: 'servicio actualizado',
-    data: body
-  })
+router.delete('/:id',(req,res)=>{
+  const {id} = req.params;
+  const product = service.delete(id)
+  res.json(product)
 })
+
+// router.get('/parametros', (req,res)=>{
+//   const {id,size} = req.query;
+//   console.log(`se esta aca`)
+//   console.log(`${id} y ${size}`)
+// })
+
+// router.get('/:id', (req , res) =>{
+//   const id = req.params.id;
+//   res.json({
+//     id,
+//     name: "Papa",
+//     precio: 5000
+//   });
+// })
+
+// router.post('/', (req , res) =>{
+//   const body = req.body;
+//   res.status(201).json({ //manejo de codigos de respuesta HTTP 201 - creado
+//     message: 'servicio creado',
+//     data: body
+//   })
+// })
+
+// router.patch('/:id', (req , res) =>{
+//   const body = req.body;
+//   res.json({
+//     message: 'servicio actualizado',
+//     data: body
+//   })
+// })
 
 
 module.exports = router;

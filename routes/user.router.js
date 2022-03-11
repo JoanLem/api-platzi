@@ -1,5 +1,17 @@
-const express = require('express')
+const express = require('express');
 const router = express.Router();
+const service = require('../services/users.service');
+
+
+const usersServices = new service;
+
+router.get('/', (req,res)=>{
+  usersServices.find();
+  res.status('200').json(
+    usersServices
+  )
+
+})
 
 
 router.get('/', (req, res)=>{

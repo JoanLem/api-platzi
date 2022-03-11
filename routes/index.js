@@ -1,10 +1,16 @@
 const express = require('express')
 const productsRouter = require("./products.router")
 const usersRouter = require("./user.router")
+const servicesRouter = require('./services.router')
 
 function routerApi(app){
   const router = express.Router();
   app.use('/api/v1', router)
+  router.use('/users', usersRouter)
+  router.use('/products', productsRouter)
+  router.use('/services', servicesRouter)
+
+  // Endpoint para testear el api
   router.use('/test', (req,res)=>{
     res.json({
       "data": "welcome to the Api V1 test ",
@@ -12,8 +18,7 @@ function routerApi(app){
       "mesaje": "Endpoint OK"
     })
   })
-  router.use('/products', productsRouter)
-  router.use('/users', usersRouter)
+  // -----------------------------
 
 }
 

@@ -1,6 +1,8 @@
 const express = require('express');
-//const { restart } = require('nodemon');
 const routerApi= require('./routes')
+const { logErrors, errorHandler, boomErrorHandler } = require('./middlewares/error.handler')
+// const {} = require('./dto')
+
 
 const app = express();
 const port = 3000;
@@ -26,6 +28,10 @@ app.get('/test', (req, res)=>{
 
 routerApi(app)
 
+// meddileware
+app.use(logErrors);
+app.use(boomErrorHandler);
+app.use(errorHandler);
 
 // ------- Server running
 app.listen(app.get('port'), ()=>{

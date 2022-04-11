@@ -17,7 +17,7 @@ class servicesService{
     ]
   }
 
-find(){
+async find(){
   return this.services;
 
 }

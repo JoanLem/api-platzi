@@ -18,6 +18,9 @@
     "prettier": "^2.5.1"
   },
   "dependencies": {
-    "express": "^4.17.3"
+    "@hapi/boom": "^9.1.4",
+    "express": "^4.17.3",
+    "express-myconnection": "^1.0.4",
+    "joi": "^17.6.0"
   }
 }

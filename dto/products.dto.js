@@ -20,4 +20,5 @@ const updateProductDto = Joi.object({
 const getProductDto = Joi.object({
   id : id.required(),
 })
+
 module.exports= {createProductDto,updateProductDto,getProductDto}

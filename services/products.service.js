@@ -1,4 +1,5 @@
 const boom = require('@hapi/boom');
+const { v4: uuidv4 } = require('uuid');
 
 class productsService {
   constructor() {
@@ -13,9 +14,7 @@ class productsService {
 
   find() {
     return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(this.products);
-      }, 5000);
+      resolve(this.products);
     });
   }
 
@@ -32,6 +31,7 @@ class productsService {
 
   create(data) {
     const newproduct = {
+      id: uuidv4(),
       ...data,
     };
     this.products.push(newproduct);
@@ -39,7 +39,7 @@ class productsService {
   }
 
   update(id, data) {
-    const index = this.products.findIndex((item) => item.id == parseInt(id));
+    const index = this.products.findIndex((item) => item.id == id);
     if (index === -1) {
       throw new Error('el producto no fue encontrado');
     }
@@ -52,7 +52,7 @@ class productsService {
   }
 
   delete(id) {
-    const index = this.products.findIndex((item) => item.id == parseInt(id));
+    const index = this.products.findIndex((item) => item.id == id);
     this.products.splice(index, 1);
   }
 }

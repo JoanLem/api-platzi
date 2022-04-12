@@ -1,7 +1,6 @@
 {
   "name": "api-platzi",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "scripts": {
     "dev": "nodemon server.js",
@@ -19,8 +18,19 @@
   },
   "dependencies": {
     "@hapi/boom": "^9.1.4",
+    "cors": "^2.8.5",
     "express": "^4.17.3",
     "express-myconnection": "^1.0.4",
-    "joi": "^17.6.0"
-  }
+    "joi": "^17.6.0",
+    "uuid": "^8.3.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jhojannlem/api-platzi.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jhojannlem/api-platzi/issues"
+  },
+  "homepage": "https://github.com/jhojannlem/api-platzi#readme",
+  "description": ""
 }

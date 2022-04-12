@@ -1,11 +1,12 @@
 const Joi = require('joi');
 
 
-
+// validaciones de valores
 const id = Joi.string().uuid();
-const product = Joi.string().alphanum().min(3).max(10);
-const price = Joi.number().integer().min(5.3);
+const product = Joi.string().min(3).max(10);
+const price = Joi.number().min(5);
 
+// Estructura del objeto
 
 const createProductDto = Joi.object({
   product : product.required(),

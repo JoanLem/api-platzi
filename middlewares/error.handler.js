@@ -1,11 +1,11 @@
 function logErrors(err, req, res, next) {
-  console.log('funcion logErrors');
+  // console.log('funcion logErrors');
   console.error(err);
   next(err);
 }
 
 function boomErrorHandler(err, req, res, next) {
-  console.log('funcion boomErrorHandler');
+  // console.log('funcion boomErrorHandler');
   if (err.isBoom) {
     const {output} = err;
     res.status(output.statusCode).json(output.payload);
@@ -14,7 +14,7 @@ function boomErrorHandler(err, req, res, next) {
 }
 
 function errorHandler(err, req, res, next) {
-  console.log('funcion errorHandler');
+  // console.log('funcion errorHandler');
   res.status(500).json({
     message: err.message,
     stack: err.stack,

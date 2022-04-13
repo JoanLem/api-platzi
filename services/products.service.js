@@ -13,6 +13,7 @@ class productsService {
   }
 
   find() {
+    console.log('Run Function findAll - in products.service');
     return new Promise((resolve, reject) => {
       resolve(this.products);
     });

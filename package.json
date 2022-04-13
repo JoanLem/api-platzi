@@ -24,6 +24,9 @@
     "joi": "^17.6.0",
     "uuid": "^8.3.2"
   },
+  "engines": {
+    "node": "14.x"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jhojannlem/api-platzi.git"

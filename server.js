@@ -1,13 +1,26 @@
 const express = require('express');
 const routerApi= require('./routes');
 const { logErrors, errorHandler, boomErrorHandler } = require('./middlewares/error.handler');
-// const cors = require('cors');
+const cors = require('cors');
 
 const app = express();
 const port = 3000;
 app.use(express.json())
 
-app.use
+
+const whiteList = ['http://127.0.0.1:5500','http://localhost:5000'];
+const option = {
+  origin: (origen, callback)=>{
+    if (whiteList.includes(origen) || !origen) {
+      callback(null,true);
+    } else {
+      callback(new Error('NO Access'));
+    }
+  }
+}
+
+app.use(cors(option))
+
 app.set('port', process.env.PORT || port)
 
 app.get('/', (req, res)=>{
@@ -29,7 +42,6 @@ routerApi(app)
 
 // meddileware
 // Configurar cabeceras y cors
-// app.use(cors())
 app.use(logErrors);
 app.use(boomErrorHandler);
 app.use(errorHandler);

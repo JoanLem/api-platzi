@@ -6,11 +6,12 @@ const { createProductDto, updateProductDto, getProductDto } = require('.././dto/
 
  const servicesSevices = new service;
 
-router.get('/', (req, res,next) =>{
-  const listServices = servicesSevices.find()
+router.get('/', async(req, res,next) =>{
+  const listServices = await servicesSevices.find()
   res.json(
     listServices
   )
+  console.log(listServices)
 })
 
 module.exports = router;

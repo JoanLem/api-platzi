@@ -8,7 +8,7 @@ function routerApi(app){
   app.use('/api/v1', router)
   router.use('/products', productsRouter)
   router.use('/users', usersRouter)
-  router.use('/servicios', servicesRouter)
+  router.use('/services', servicesRouter)
 
   // Endpoint para testear el api
   router.use('/test', (req,res)=>{

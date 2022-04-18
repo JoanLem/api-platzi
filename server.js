@@ -2,10 +2,13 @@ const express = require('express');
 const routerApi= require('./routes');
 const { logErrors, errorHandler, boomErrorHandler } = require('./middlewares/error.handler');
 const cors = require('cors');
+const mysql = require('mysql')
+const myconnect = require('express-myconnection')
 
 const app = express();
 const port = 3000;
-app.use(express.json())
+
+
 
 
 const whiteList = ['http://127.0.0.1:5500','http://localhost:5000'];
@@ -19,9 +22,22 @@ const option = {
   }
 }
 
+
 app.use(cors(option))
 
+
+
 app.set('port', process.env.PORT || port)
+
+/** conceccion Data Base */
+const db= {
+  host: 'localhost',
+  port: 3307,
+  user: 'root',
+  password: 'master',
+  database: 'LBDA'
+}
+
 
 app.get('/', (req, res)=>{
   res.send('server running in port ' + port)
@@ -38,15 +54,15 @@ app.get('/test', (req, res)=>{
 })
 
 
+app.use(myconnect(mysql, db, 'single'))
 routerApi(app)
+app.use(express.json())
 
 // meddileware
-// Configurar cabeceras y cors
+
 app.use(logErrors);
 app.use(boomErrorHandler);
 app.use(errorHandler);
-
-
 
 
 

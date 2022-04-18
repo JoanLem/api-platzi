@@ -4,12 +4,36 @@ const { v4: uuidv4 } = require('uuid');
 class productsService {
   constructor() {
     this.products = [
-      { id: '123e4567-e89b-12d3-a456-426655440000', product: 'potato', price: 15.0 },
-      { id: '123e4567-e89b-12d3-a456-426655440001', product: 'Banana', price: 5.0 },
-      { id: '123e4567-e89b-12d3-a456-426655440002', product: 'cafe', price: 12.5 },
-      { id: '123e4567-e89b-12d3-a456-426655440003', product: 'Rice', price: 8.9 },
-      { id: '123e4567-e89b-12d3-a456-426655440004', product: 'Egg', price: 12.5 },
-      { id: '123e4567-e89b-12d3-a456-426655440005', product: 'Tomato', price: 7.8 },
+      {
+        id: '123e4567-e89b-12d3-a456-426655440000',
+        product: 'potato',
+        price: 15.0,
+      },
+      {
+        id: '123e4567-e89b-12d3-a456-426655440001',
+        product: 'Banana',
+        price: 5.0,
+      },
+      {
+        id: '123e4567-e89b-12d3-a456-426655440002',
+        product: 'cafe',
+        price: 12.5,
+      },
+      {
+        id: '123e4567-e89b-12d3-a456-426655440003',
+        product: 'Rice',
+        price: 8.9,
+      },
+      {
+        id: '123e4567-e89b-12d3-a456-426655440004',
+        product: 'Egg',
+        price: 12.5,
+      },
+      {
+        id: '123e4567-e89b-12d3-a456-426655440005',
+        product: 'Tomato',
+        price: 7.8,
+      },
     ];
   }
 

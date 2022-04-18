@@ -8,12 +8,24 @@ const validatorHandler = require('.././middlewares/validator.handler');
 const service = new productsService();
 
 // Find All
-router.get('/', async (req, res) => {
-  await service.find();
-  res.status(200).json({
-    message: 'response OK',
-    service,
+router.get('/', async (req, res,next) => {
+  req.getConnection((error, conn) => {
+    try {
+      conn.query('SELECT * FROM tb_servicios', (error, rows) => {
+        res.json(rows);
+      });
+    } catch (error) {
+      console.log('EL error en ejecucucion es: ' + error);
+      res.send(error);
+    }
   });
+
+  // await service.find();
+  // res.status(200).json({
+  //   message: 'response OK',
+  //   service,
+  // });
+
 });
 
 // Find one by ID
@@ -36,7 +48,6 @@ validatorHandler(createProductDto,'body'),
 async(req, res, next) => {
   try {
     const data = req.body;
-    console.log(`objeto a crear  ${data}`)
     const newproduct = await service.create(data);
     res.json(newproduct);
   } catch (error) {
